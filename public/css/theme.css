@@ -1,0 +1,16 @@
+html, body {
+	background-color: #e2f8ff;
+}
+
+.required-field {
+	color: red;
+}
+
+.dropdown-menu {
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+.selected {
+	background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+}
