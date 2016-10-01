@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-const PORT = 52360;
+const PORT = 8080;
 
 // EJS template engine
 app.set('view engine', 'ejs');

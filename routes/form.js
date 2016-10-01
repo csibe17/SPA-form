@@ -10,9 +10,7 @@ module.exports = function(app){
 	app.get('/fillForm',function(req,res){
 		res.render('form', {
 			shownMessages: [messages.welcome],
-			occupations: occupations.occupations,
-			nameMissing: true,
-			emailMissing: true
+			occupations: occupations.occupations
 		});
 	});
 
