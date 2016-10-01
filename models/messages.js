@@ -24,7 +24,7 @@ module.exports = {
 		messageType: 'danger'
 	},
 	success: {
-		message: 'Registration successful!',
+		message: 'Thank you for registration!',
 		messageType: 'success'
 	},
 	welcome: {
