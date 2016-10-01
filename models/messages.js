@@ -24,7 +24,7 @@ module.exports = {
 		messageType: 'danger'
 	},
 	success: {
-		message: 'Data has been posted successfully.',
+		message: 'Registration successful!',
 		messageType: 'success'
 	},
 	welcome: {
