@@ -21,14 +21,14 @@
 					<label for="occupation">Occupation</label>
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" id="btn123" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select... <span class="caret"></span></button>
+							<button type="button" id="birthday-select-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="-1">Select... <span class="caret"></span></button>
 							<ul id="occupationsList" class="dropdown-menu">
 								<% occupations.forEach(function (occ) { -%>
 									<li><a data-target="#" onclick="$('#occupation').val($(this).text()).focus()"><%= occ %></a></li>
 								<% }) -%>
 							</ul>
 						</div>
-						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)"  onblur="clientValidator.validateField({field:this,fieldName:'occupation'})" />
+						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)"  onblur="$('#birthday-select-btn').parent().removeClass('open');clientValidator.validateField({field:this,fieldName:'occupation'})" />
 						<span id="status-icon-occupation" class="glyphicon form-control-feedback" aria-hidden="true"></span>
 					</div>
 					<div id="status-message-occupation" class="help-block with-errors"></div>

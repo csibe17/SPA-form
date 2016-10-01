@@ -8,7 +8,7 @@ var request = (function(){
 		requestBody.email=$('#email').val();
 		requestBody.birthday=$('#birthdaypicker').data("DateTimePicker").date().format("YYYY-MM-DD");
 	}
-	
+
 	function send(){
 		// clear visible messages
 		messageHandler.clearMessages();
@@ -42,6 +42,9 @@ var response = (function(){
 		// hide progress icon
 		$('#progress-icon').hide();
 
+		// go to top
+		$('html,body').animate({ scrollTop: 0 }, 'slow');
+
 		// parse and show all messages from response
 		for (var msg = 0; msg < data.messages.length; msg++) {
 			messageHandler.addMessage(data.messages[msg]);
@@ -49,10 +52,10 @@ var response = (function(){
 
 		// reset every UI elements if success
 		if(data.code===200){
-			//$('input[type="text"]').val('');
-			/*$('input[type="text"]').each(function(){
-
-			});*/
+			$('input[type="text"]').val('');
+			$('input[type="text"]').each(function(){
+				clientValidator.validateField({field:this,fieldName:this.id});
+			});
 			var defDate = $('#birthdaypicker').data("DateTimePicker").defaultDate();
 			$('#birthdaypicker').data("DateTimePicker").date(defDate).viewMode("years");
 		}
@@ -65,6 +68,9 @@ var response = (function(){
 	function handleError(err){
 		// hide progress icon
 		$('#progress-icon').hide();
+
+		// go to top
+		$('html,body').animate({ scrollTop: 0 }, 'slow');
 
 		// show error message if the request could not came back
 		if(err.readyState>0){
