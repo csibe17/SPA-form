@@ -9,35 +9,37 @@
 				shownMessages: shownMessages
 			}) %>
 			<!--<form method="POST">-->
-				<div class="form-group <%= nameMissing ? 'has-error' : '' %> has-feedback">
+				<div id="status-feedback-name" class="form-group has-feedback">
 					<label for="name">Name</label><span class="required-field"> *</span>
-					<input type="text" class="form-control" name="name" id="name" placeholder="Name" required autofocus="true">
-					<% if (nameMissing) { %>
-						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-						<div class="help-block with-errors">Please fill out this field.</div>
-					<% } %>
+					<input type="text" class="form-control" name="name" id="name" placeholder="Name" required autofocus="true" onblur="clientValidator.validateField({field:this,fieldName:'name'})" />
+					<span id="status-icon-name" class="glyphicon form-control-feedback" aria-hidden="true"></span>
+					<div id="status-message-name" class="help-block with-errors"></div>
 				</div>
 
-				<label for="occupation">Occupation</label>
-				<div class="input-group form-group">
-					<div class="input-group-btn">
-						<button type="button" id="btn123" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select... <span class="caret"></span></button>
-						<ul id="occupationsList" class="dropdown-menu">
-							<% occupations.forEach(function (occ) { -%>
-								<li><a data-target="#" onclick="$('#occupation').val($(this).text())"><%= occ %></a></li>
-							<% }) -%>
-						</ul>
+				
+				<div id="status-feedback-occupation" class="form-group">
+					<label for="occupation">Occupation</label>
+					<div class="input-group">
+						<div class="input-group-btn">
+							<button type="button" id="btn123" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select... <span class="caret"></span></button>
+							<ul id="occupationsList" class="dropdown-menu">
+								<% occupations.forEach(function (occ) { -%>
+									<li><a data-target="#" onclick="$('#occupation').val($(this).text()).focus()"><%= occ %></a></li>
+								<% }) -%>
+							</ul>
+						</div>
+						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)"  onblur="clientValidator.validateField({field:this,fieldName:'occupation'})" />
+						<span id="status-icon-occupation" class="glyphicon form-control-feedback" aria-hidden="true"></span>
 					</div>
-					<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)">
+					<div id="status-message-occupation" class="help-block with-errors"></div>
 				</div>
 
-				<div class="form-group <%= emailMissing ? 'has-error' : '' %> has-feedback">
+
+				<div id="status-feedback-email" class="form-group has-feedback">
 					<label for="email">Email</label><span class="required-field"> *</span>
-					<input type="text" class="form-control" name="email" id="email" placeholder="Email address" required>
-					<% if (emailMissing) { %>
-						<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-						<div class="help-block with-errors">Please fill out this field.</div>
-					<% } %>
+					<input type="text" class="form-control" name="email" id="email" placeholder="Email address" required onblur="clientValidator.validateField({field:this,fieldName:'email'})" />
+					<span id="status-icon-email" class="glyphicon form-control-feedback" aria-hidden="true"></span>
+					<div id="status-message-email" class="help-block with-errors"></div>
 				</div>
 
 				<div class="form-group">
@@ -46,13 +48,11 @@
 						<div class="col-md-6">
 							<div id="birthdaypicker"></div>
 						</div>
-						<div class="col-md-6">
-							<input type="hidden" name="birthday" id="birthday">
-						</div>
+						<div class="col-md-6"></div>
 					</div>
 				</div>
 
-				<input type="submit" class="btn btn-primary" value="Register"/>
+				<input type="submit" class="btn btn-primary" value="Register" onclick="request.create();request.send()" /><img id="progress-icon" src="/image/progress.gif">
 
 				<div class="row">&nbsp;</div>
 
