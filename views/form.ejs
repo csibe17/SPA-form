@@ -28,7 +28,7 @@
 								<% }) -%>
 							</ul>
 						</div>
-						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)"  onblur="$('#birthday-select-btn').parent().removeClass('open');clientValidator.validateField({field:this,fieldName:'occupation'})" />
+						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)" onkeydown="if(event.keyCode==9){$('#occupationsList').parent().removeClass('open');}" onblur="clientValidator.validateField({field:this,fieldName:'occupation'})" />
 						<span id="status-icon-occupation" class="glyphicon form-control-feedback" aria-hidden="true"></span>
 					</div>
 					<div id="status-message-occupation" class="help-block with-errors"></div>

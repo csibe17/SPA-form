@@ -12,6 +12,7 @@ module.exports = function(app){
 		if(validator.isValid()){
 			var {name,occupation,email,birthday}=validator.getData();
 			var newUser = new User(name,occupation,email,birthday);
+			console.log('User added at: '+new Date());
 			console.log(newUser.toString());
 			validator.getResponse().addMessage({message:`Successful registration with the following data:\n${newUser.toString()}`,messageType:"info"});
 		}

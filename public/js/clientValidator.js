@@ -10,7 +10,7 @@ var clientValidator = (function(){
 	var getValidator = (type) => {
 		var validators = {
 			"name": new XRegExp("^[\\p{L} ]+$"),///^\\p{L}+$/,
-			"occupation": new XRegExp("^[\\p{L} ]*$"),///^[a-zA-Z ]*$/,
+			"occupation": /^[a-zA-Z \'\&\/\-\(\)]*$/,//new XRegExp("^[\\p{L} \'\&\/\-\(\)]*$"),
 			"email": /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 		}
 
