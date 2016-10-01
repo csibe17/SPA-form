@@ -1,3 +1,4 @@
+// Used for creating and sending the server request
 var request = (function(){
 	var requestBody={};
 
@@ -7,15 +8,13 @@ var request = (function(){
 		requestBody.email=$('#email').val();
 		requestBody.birthday=$('#birthdaypicker').data("DateTimePicker").date().format("YYYY-MM-DD");
 	}
+	
 	function send(){
-		console.log(JSON.stringify(requestBody));
-
+		// clear visible messages
 		messageHandler.clearMessages();
+
+		// send AJAX POST
 		$('#progress-icon').show();
-		/*$.post('/addUser',,function(){
-
-		});*/
-
 		$.ajax({
 			url: "addUser",
 			type: "POST",
@@ -31,51 +30,70 @@ var request = (function(){
 		create: create,
 		send: send
 	};
+
 })();
 
 
+// Used for handling the server's response
 var response = (function(){
 
+	// Handle successful AJAX
 	function handleSuccess(data){
+		// hide progress icon
 		$('#progress-icon').hide();
+
+		// parse and show all messages from response
 		for (var msg = 0; msg < data.messages.length; msg++) {
 			messageHandler.addMessage(data.messages[msg]);
 		}
+
+		// reset every UI elements if success
 		if(data.code===200){
 			//$('input[type="text"]').val('');
-			$('#birthdaypicker').data("DateTimePicker").defaultDate();
+			/*$('input[type="text"]').each(function(){
+
+			});*/
+			var defDate = $('#birthdaypicker').data("DateTimePicker").defaultDate();
+			$('#birthdaypicker').data("DateTimePicker").date(defDate).viewMode("years");
 		}
 		if(data.code===400){
 
 		}
 	}
+
+	// Handle errorful AJAX
 	function handleError(err){
+		// hide progress icon
 		$('#progress-icon').hide();
-		console.log(err);
+
+		// show error message if the request could not came back
 		if(err.readyState>0){
 			messageHandler.addMessage({message:err.responseText+" occured",messageType:"danger"});
 		}
 		else{
 			messageHandler.addMessage({message:"Communication error occured",messageType:"danger"});
 		}
-
 	}
+
 	return {
 		handleSuccess: handleSuccess,
 		handleError: handleError
 	};
+
 })();
 
 
+// Used for message handling
 var messageHandler = (function(){
 	
 	function clearMessages(){
 		$('#message-area').html("");
 	}
+
 	function addMessage(message){
 		var msg = '<div class="alert alert-'+message.messageType+' alert-dismissible" role="alert">' +
 		'<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> ' +
-		message.message +
+		message.message.replace(/\n/g, "<br/>") +
 		'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
 		'</div>';
 
@@ -86,4 +104,5 @@ var messageHandler = (function(){
 		clearMessages: clearMessages,
 		addMessage: addMessage
 	};
+
 })();
