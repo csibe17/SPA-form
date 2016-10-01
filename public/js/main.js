@@ -16,19 +16,22 @@ $(function () {
 });
 
 
+// Used for the autocomplete feature of occupation field
 var autoComplete = (function(){
 	// private number to keep the currently selected item by keyboard
 	var selectedLi=-1;
+
 	return (event, value) => {
+		// if up or down arrow key is pressed
 		if(event.keyCode==38 || event.keyCode==40){
 			switch (event.keyCode) {
-				// down arrow
+				// down arrow key
 				case 40:
 					selectedLi+=1;
 					$('#occupationsList li.selected').removeClass('selected');
 					$(`#occupationsList li:visible:eq(${selectedLi})`).addClass('selected');
 					break;
-				// up arrow
+				// up arrow key
 				case 38:
 					selectedLi-=1;
 					$('#occupationsList li.selected').removeClass('selected');
