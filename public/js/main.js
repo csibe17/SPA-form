@@ -19,7 +19,7 @@ $(function () {
 var autoComplete = (function(){
 	// private number to keep the currently selected item by keyboard
 	var selectedLi=-1;
-	return function (event, value){
+	return (event, value) => {
 		if(event.keyCode==38 || event.keyCode==40){
 			switch (event.keyCode) {
 				// down arrow
@@ -31,7 +31,7 @@ var autoComplete = (function(){
 				// up arrow
 				case 38:
 					selectedLi-=1;
-					$('#occupationsList li.selected').removeClass('selected');					
+					$('#occupationsList li.selected').removeClass('selected');
 					$(`#occupationsList li:visible:eq(${selectedLi})`).addClass('selected');
 					break;
 			}
