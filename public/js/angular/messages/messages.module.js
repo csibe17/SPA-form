@@ -1,3 +1,4 @@
+// Used for handling messages
 angular.module('messages', [])
 	.service('MessageHandler', [
         function() {
@@ -8,6 +9,7 @@ angular.module('messages', [])
             }
 
             function addMessage(newMessage) {
+                //newMessage.message=newMessage.message.replace(/\n/g, "<br/>");
                 messages.push(newMessage);
             }
 
