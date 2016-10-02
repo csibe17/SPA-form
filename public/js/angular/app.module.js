@@ -6,5 +6,6 @@ var SPAForm = angular.module('SPAFormApp', [
 	'response',
 	'messages',
 	'form',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'angular-loading-bar'
 ]);
