@@ -4,40 +4,38 @@
 		<div class="col-xs-12 text-center">
 			<h2>Registration</h2>
 		</div>
-		<div class="col-md-push-3 col-md-6 col-xs-12">
+		<div class="col-md-push-3 col-md-6 col-xs-12" ng-controller="FormController">
 			<%- include('./partials/messagebox', {
 				shownMessages: shownMessages
 			}) %>
 			<!--<form method="POST">-->
-				<div id="status-feedback-name" class="form-group has-feedback">
+				<div id="status-feedback-name" class="form-group has-feedback {{form.errors.name.type}}">
 					<label for="name">Name</label><span class="required-field"> *</span>
-					<input type="text" class="form-control" name="name" id="name" placeholder="Name" required autofocus="true" onblur="clientValidator.validateField({field:this,fieldName:'name'})" />
-					<span id="status-icon-name" class="glyphicon form-control-feedback" aria-hidden="true"></span>
-					<div id="status-message-name" class="help-block with-errors"></div>
+					<input type="text" class="form-control" ng-model="form.data.name" name="name" id="name" placeholder="Name" required autofocus="true" ng-blur="fieldBlur($event)"/>
+					<span id="status-icon-name" class="glyphicon {{form.errors.name.icon}} form-control-feedback" aria-hidden="true"></span>
+					<div id="status-message-name" class="help-block with-errors">{{form.errors.name.text}}</div>
 				</div>
 
-				<div id="status-feedback-occupation" class="form-group">
+				<div id="status-feedback-occupation" class="form-group {{form.errors.occupation.type}}">
 					<label for="occupation">Occupation</label>
 					<div class="input-group">
-						<div class="input-group-btn">
-							<button type="button" id="birthday-select-btn" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" tabindex="-1">Select... <span class="caret"></span></button>
+						<div class="input-group-btn" ng-class="{'open':(form.statuses.occupationsList)==true}">
+							<button type="button" id="birthday-select-btn" class="btn btn-default dropdown-toggle" ng-click="toogleDropdown()" aria-haspopup="true" aria-expanded="false" tabindex="-1">Select... <span class="caret"></span></button>
 							<ul id="occupationsList" class="dropdown-menu">
-								<% occupations.forEach(function (occ) { -%>
-									<li><a data-target="#" onclick="$('#occupation').val($(this).text()).focus()"><%= occ %></a></li>
-								<% }) -%>
+								<li ng-repeat="occ in form.data.occupationList | filter:filterValue"><a data-target="#" ng-click="selectItem(occ)" onclick="/*$('#occupation').val($(this).text()).focus()*/">{{occ}}</a></li>
 							</ul>
 						</div>
-						<input type="text" class="form-control" name="occupation" id="occupation" placeholder="... or enter occupation" onkeyup="this.value=autoComplete(event,this.value)" onkeydown="if(event.keyCode==9){$('#occupationsList').parent().removeClass('open');}" onblur="clientValidator.validateField({field:this,fieldName:'occupation'})" />
-						<span id="status-icon-occupation" class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						<input type="text" class="form-control" ng-model="form.data.occupation" name="occupation" id="occupation" placeholder="... or enter occupation" ng-keyup="occupationKeyUp($event)" ng-keydown="occupationKeyDown($event)" ng-blur="fieldBlur($event)"/>
+						<span id="status-icon-occupation" class="glyphicon {{form.errors.occupation.icon}} form-control-feedback" aria-hidden="true"></span>
 					</div>
-					<div id="status-message-occupation" class="help-block with-errors"></div>
+					<div id="status-message-occupation" class="help-block with-errors">{{form.errors.occupation.text}}</div>
 				</div>
 
-				<div id="status-feedback-email" class="form-group has-feedback">
+				<div id="status-feedback-email" class="form-group has-feedback {{form.errors.email.type}}">
 					<label for="email">Email</label><span class="required-field"> *</span>
-					<input type="text" class="form-control" name="email" id="email" placeholder="Email address" required onblur="clientValidator.validateField({field:this,fieldName:'email'})" />
-					<span id="status-icon-email" class="glyphicon form-control-feedback" aria-hidden="true"></span>
-					<div id="status-message-email" class="help-block with-errors"></div>
+					<input type="text" class="form-control" ng-model="form.data.email" name="email" id="email" placeholder="Email address" required ng-blur="fieldBlur($event)"/>
+					<span id="status-icon-email" class="glyphicon {{form.errors.email.icon}} form-control-feedback" aria-hidden="true"></span>
+					<div id="status-message-email" class="help-block with-errors">{{form.errors.email.text}}</div>
 				</div>
 
 				<div class="form-group">
@@ -45,12 +43,15 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div id="birthdaypicker"></div>
+							<div style="display:inline-block; min-height:240px;">
+								<div uib-datepicker ng-model="form.data.birthday" class="" datepicker-options="birtdayOptions"></div>
+							</div>
 						</div>
 						<div class="col-md-6"></div>
 					</div>
 				</div>
 
-				<input type="submit" class="btn btn-primary" value="Register" onclick="request.create();request.send()" /><img id="progress-icon" src="/image/progress.gif">
+				<input type="submit" class="btn btn-primary" value="Register" ng-click="registerClick()" />
 
 				<div class="row">&nbsp;</div>
 
