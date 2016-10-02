@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 // Include all the routes
 require('./routes/form')(app);
 require('./routes/adduser')(app);
+require('./routes/getoccupations')(app);
 
 // Standard error handler
 app.use((err, req, res, next) => {
