@@ -14,6 +14,7 @@ angular.module('request', [])
                 // start loading animation
                 cfpLoadingBar.start();
 
+                // GET request
                 if(reqType==="GET"){
                     return $http.get(path)
                         .then(ResponseHandler.handleSuccess, ResponseHandler.handleError)
@@ -23,6 +24,7 @@ angular.module('request', [])
                         });
                 }
 
+                // POST request
                 if(reqType==="POST") {
                     return $http.post(path, requestBody, {})
                         .then(ResponseHandler.handleSuccess, ResponseHandler.handleError)

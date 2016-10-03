@@ -22,7 +22,7 @@
 						<div class="input-group-btn" ng-class="{'open':(form.statuses.occupationsList)==true}">
 							<button type="button" id="birthday-select-btn" class="btn btn-default dropdown-toggle" ng-click="toogleDropdown()" aria-haspopup="true" aria-expanded="false" tabindex="-1">Select... <span class="caret"></span></button>
 							<ul id="occupationsList" class="dropdown-menu">
-								<li ng-repeat="occ in form.data.occupationList | filter:filterValue"><a data-target="#" ng-click="selectItem(occ)" onclick="/*$('#occupation').val($(this).text()).focus()*/">{{occ}}</a></li>
+								<li ng-repeat="occ in form.data.occupationList | filter:filterValue"><a data-target="#" ng-click="selectItem(occ)">{{occ}}</a></li>
 							</ul>
 						</div>
 						<input type="text" class="form-control" ng-model="form.data.occupation" name="occupation" id="occupation" placeholder="... or enter occupation" ng-keyup="occupationKeyUp($event)" ng-keydown="occupationKeyDown($event)" ng-blur="fieldBlur($event)"/>
@@ -54,7 +54,6 @@
 				<input type="submit" class="btn btn-primary" value="Register" ng-click="registerClick()" />
 
 				<div class="row">&nbsp;</div>
-
 			<!--</form>-->
 		</div>
 	</div>

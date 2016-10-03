@@ -72,7 +72,7 @@ module.exports = class Validator{
 
 	_isValidOccupation(occupation){
 		//return /^[a-zA-Z ]*$/.test(occupation);
-		return /^[a-zA-Z \'\&\/\-\(\)]*$/.test(occupation);//new XRegExp("^[\\p{L} \'\&\/\-\(\)]**$").test(occupation);
+		return /^[a-zA-Z \'\&\/\-\(\),]*$/.test(occupation);//new XRegExp("^[\\p{L} \'\&\/\-\(\)]**$").test(occupation);
 	}
 
 	_isValidDate(date){

@@ -1,7 +1,7 @@
 module.exports = class User{
 
 	constructor(name='', occupation='', email='', birthday=''){
-		this.name=name;		
+		this.name=name;
 		this.occupation=occupation;
 		this.email=email;
 		this.birthday=birthday;

@@ -29,7 +29,7 @@ angular.module('clientValidator', [])
 		function getValidator(type) {
 			var validators = {
 				"name": new XRegExp("^[\\p{L} ]+$"),///^\\p{L}+$/,
-				"occupation": /^[a-zA-Z \'\&\/\-\(\)]*$/,//new XRegExp("^[\\p{L} \'\&\/\-\(\)]*$"),
+				"occupation": /^[a-zA-Z \'\&\/\-\(\),]*$/,//new XRegExp("^[\\p{L} \'\&\/\-\(\)]*$"),
 				"email": /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 			};
 
