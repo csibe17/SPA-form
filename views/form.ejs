@@ -9,14 +9,14 @@
 				shownMessages: shownMessages
 			}) %>
 			<!--<form method="POST">-->
-				<div id="status-feedback-name" class="form-group has-feedback {{form.errors.name.type}}">
+				<div id="status-feedback-name" class="form-group has-feedback" ng-class="{'has-success': form.errors.name.type==1, 'has-error': form.errors.name.type==2, '': form.errors.name.type==3}">
 					<label for="name">Name</label><span class="required-field"> *</span>
 					<input type="text" class="form-control" ng-model="form.data.name" name="name" id="name" placeholder="Name" required autofocus="true" ng-blur="fieldBlur($event)"/>
-					<span id="status-icon-name" class="glyphicon {{form.errors.name.icon}} form-control-feedback" aria-hidden="true"></span>
+					<span id="status-icon-name" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': form.errors.name.type==1, 'glyphicon-remove': form.errors.name.type==2, '': form.errors.name.type==3}" aria-hidden="true"></span>
 					<div id="status-message-name" class="help-block with-errors">{{form.errors.name.text}}</div>
 				</div>
 
-				<div id="status-feedback-occupation" class="form-group {{form.errors.occupation.type}}">
+				<div id="status-feedback-occupation" class="form-group" ng-class="{'has-success': form.errors.occupation.type==1, 'has-error': form.errors.occupation.type==2, '': form.errors.occupation.type==3}">
 					<label for="occupation">Occupation</label>
 					<div class="input-group">
 						<div class="input-group-btn" ng-class="{'open':(form.statuses.occupationsList)==true}">
@@ -26,15 +26,15 @@
 							</ul>
 						</div>
 						<input type="text" class="form-control" ng-model="form.data.occupation" name="occupation" id="occupation" placeholder="... or enter occupation" ng-keyup="occupationKeyUp($event)" ng-keydown="occupationKeyDown($event)" ng-blur="fieldBlur($event)"/>
-						<span id="status-icon-occupation" class="glyphicon {{form.errors.occupation.icon}} form-control-feedback" aria-hidden="true"></span>
+						<span id="status-icon-occupation" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': form.errors.occupation.type==1, 'glyphicon-remove': form.errors.occupation.type==2, '': form.errors.occupation.type==3}" aria-hidden="true"></span>
 					</div>
 					<div id="status-message-occupation" class="help-block with-errors">{{form.errors.occupation.text}}</div>
 				</div>
 
-				<div id="status-feedback-email" class="form-group has-feedback {{form.errors.email.type}}">
+				<div id="status-feedback-email" class="form-group has-feedback" ng-class="{'has-success': form.errors.email.type==1, 'has-error': form.errors.email.type==2, '': form.errors.email.type==3}">
 					<label for="email">Email</label><span class="required-field"> *</span>
 					<input type="text" class="form-control" ng-model="form.data.email" name="email" id="email" placeholder="Email address" required ng-blur="fieldBlur($event)"/>
-					<span id="status-icon-email" class="glyphicon {{form.errors.email.icon}} form-control-feedback" aria-hidden="true"></span>
+					<span id="status-icon-email" class="glyphicon form-control-feedback" ng-class="{'glyphicon-ok': form.errors.email.type==1, 'glyphicon-remove': form.errors.email.type==2, '': form.errors.email.type==3}" aria-hidden="true"></span>
 					<div id="status-message-email" class="help-block with-errors">{{form.errors.email.text}}</div>
 				</div>
 

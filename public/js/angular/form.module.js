@@ -18,17 +18,14 @@ angular.module('form', [])
                     errors: {
                         name: {
                             type: "",
-                            icon: "",
                             text: ""
                         },
                         email: {
                             type: "",
-                            icon: "",
                             text: ""
                         },
                         occupation: {
                             type: "",
-                            icon: "",
                             text: ""
                         }
                     }
@@ -59,20 +56,15 @@ angular.module('form', [])
 
             // Method to set the status of an input field
             function setFieldStatus(fieldName, status) {
+                $scope.form.errors[fieldName].type = status;
                 switch (status) {
                     case 1:
-                        $scope.form.errors[fieldName].type = "has-success";
-                        $scope.form.errors[fieldName].icon = "glyphicon-ok";
                         $scope.form.errors[fieldName].text = "Valid " + fieldName + ".";
                         break;
                     case 2:
-                        $scope.form.errors[fieldName].type = "has-error";
-                        $scope.form.errors[fieldName].icon = "glyphicon-remove";
                         $scope.form.errors[fieldName].text = "Please enter a valid " + fieldName + ".";
                         break;
                     case 3:
-                        $scope.form.errors[fieldName].type = "";
-                        $scope.form.errors[fieldName].icon = "";
                         $scope.form.errors[fieldName].text = "";
                         break;
                 }
@@ -99,6 +91,7 @@ angular.module('form', [])
                         initData();
                     }
                 });
+
                 $scope.messages = MessageHandler.getMessages();
             };
 
@@ -123,12 +116,7 @@ angular.module('form', [])
 
             // show/hide occupation list dropdown
             $scope.toogleDropdown = function () {
-                if ($scope.form.statuses.occupationsList == true) {
-                    $scope.form.statuses.occupationsList = false;
-                }
-                else {
-                    $scope.form.statuses.occupationsList = true;
-                }
+                $scope.form.statuses.occupationsList = !$scope.form.statuses.occupationsList;
             };
 
             // select an item from the occupation dropdown
