@@ -1,6 +1,6 @@
 // Main controller of the form
 angular.module('form', [])
-    .controller('FormController', ["$scope", "$window", "MessageHandler", "RequestHandler", "ClientValidatorService", "AutoCompleteService",
+    .controller('FormController', ["$scope", "$window", "MessageHandler", "RequestHandler", "ClientValidatorService",
         function ($scope, $window, MessageHandler, RequestHandler, ClientValidatorService) {
             // initialize all data
             $scope.form = {

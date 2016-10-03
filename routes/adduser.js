@@ -1,7 +1,6 @@
 module.exports = function(app){
 
 	var Validator = require('../utils/validator');
-	var Response = require('../models/response');
 	var User = require('../models/user');
 
 	app.post('/addUser', function(req,res){
