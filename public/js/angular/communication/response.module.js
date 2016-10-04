@@ -1,7 +1,7 @@
 // Used for handling the server's response
 angular.module('response', [])
-	.service('ResponseHandler', ["$window", "MessageHandler",
-		function ($window, MessageHandler) {
+	.service('ResponseHandler', ["MessageHandler",
+		function (MessageHandler) {
 			// Handle successful AJAX
 			function handleSuccess(response) {
 				// parse and show all messages from response
@@ -17,7 +17,6 @@ angular.module('response', [])
 
 			// Handle errorful AJAX
 			function handleError(response) {
-				$window.scrollTo(0, 0);
 				MessageHandler.addMessage({message: response.statusText ? response.statusText + " occured" : "Communication error occured", messageType: "danger"});
 			}
 
