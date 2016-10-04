@@ -28,7 +28,7 @@ describe("Test for backend Response model", function () {
     });
 
     it("should create correct string JSON from response object", function () {
-        response.addMessage({message:"test1",messageType:"success"});
+        response.addMessage({message: "test1", messageType: "success"});
         response.code = 200;
         expect(response.create()).to.equal('{"messages":[{"message":"test1","messageType":"success"}],"code":200}');
     });

@@ -12,12 +12,12 @@ describe("Test for backend getoccupations route", function () {
         res = {
             end: function (json) {
                 isEnded = true;
-                jsonobj=json;
+                jsonobj = json;
             }
         };
         app = {
             get: function (route, callback) {
-                usedRoute=route;
+                usedRoute = route;
                 callback({}, res);
             }
         };
@@ -36,5 +36,3 @@ describe("Test for backend getoccupations route", function () {
         expect(jsonobj).to.deep.equal(JSON.stringify(occupations));
     });
 });
-
-

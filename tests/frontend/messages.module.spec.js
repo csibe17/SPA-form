@@ -6,7 +6,7 @@ describe("MessageHandler modul", function () {
         MessageHandler = _MessageHandler_;
     }));
 
-    it('should exist', function() {
+    it('should exist', function () {
         expect(MessageHandler).toBeDefined();
     });
 

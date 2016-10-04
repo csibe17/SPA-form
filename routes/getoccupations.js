@@ -1,10 +1,10 @@
-module.exports = function(app){
+module.exports = function (app) {
 
-	var occupations = require('../models/occupation');
+    var occupations = require('../models/occupation');
 
-	app.get('/getOccupations', function(req,res){
-		occupations.code=200;
-		res.end(JSON.stringify(occupations));
-	});
+    app.get('/getOccupations', function (req, res) {
+        occupations.code = 200;
+        res.end(JSON.stringify(occupations));
+    });
 
-}
+};

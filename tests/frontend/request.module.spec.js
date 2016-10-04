@@ -1,30 +1,30 @@
 describe("RequestHandler modul", function () {
     var RequestHandler, $http, MessageHandler, ResponseHandler, cfpLoadingBar;
-    var getData,postData;
+    var getData, postData;
 
     beforeEach(angular.mock.module('request', function ($provide) {
         $provide.service('$http', function () {
             this.get = function (path) {
                 return {
-                    then: function (ok,error) {
+                    then: function (ok, error) {
                         ok();
                         return {
                             then: function (res) {
-                                getData={data:"test"};
-                                return {data:"test"};
+                                getData = {data: "test"};
+                                return {data: "test"};
                             }
                         }
                     }
                 };
             };
-            this.post = function (path,reqBody,obj) {
+            this.post = function (path, reqBody, obj) {
                 return {
-                    then: function (ok,error) {
+                    then: function (ok, error) {
                         ok();
                         return {
                             then: function (res) {
-                                postData={data:"test"};
-                                return {data:"test"};
+                                postData = {data: "test"};
+                                return {data: "test"};
                             }
                         }
                     }
@@ -59,7 +59,7 @@ describe("RequestHandler modul", function () {
         RequestHandler.send("GET", "/testroute");
         expect(MessageHandler.clearMessages).toHaveBeenCalled();
         expect(cfpLoadingBar.start).toHaveBeenCalled();
-        expect(getData).toEqual({data:"test"});
+        expect(getData).toEqual({data: "test"});
         expect(ResponseHandler.handleSuccess).toHaveBeenCalled();
     });
 
@@ -67,7 +67,7 @@ describe("RequestHandler modul", function () {
         RequestHandler.send("POST", "/testroute");
         expect(MessageHandler.clearMessages).toHaveBeenCalled();
         expect(cfpLoadingBar.start).toHaveBeenCalled();
-        expect(postData).toEqual({data:"test"});
+        expect(postData).toEqual({data: "test"});
         expect(ResponseHandler.handleSuccess).toHaveBeenCalled();
     });
 

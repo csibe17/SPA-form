@@ -4,7 +4,7 @@ var adduser = require('../../routes/adduser');
 describe("Test for backend adduser route", function () {
     var app, res, req;
     var hasSentStatus = false;
-    var hasEnded=false;
+    var hasEnded = false;
     var endobj = {};
     var postRoute;
     var gotCode;
@@ -13,7 +13,7 @@ describe("Test for backend adduser route", function () {
         res = {
             sendStatus: function (code) {
                 hasSentStatus = true;
-                gotCode=code;
+                gotCode = code;
             },
             end: function (obj) {
                 hasEnded = true;
@@ -41,7 +41,7 @@ describe("Test for backend adduser route", function () {
     });
 
     it("should check response for valid input", function () {
-        req = {body:{test:"test"}};
+        req = {body: {test: "test"}};
         adduser(app);
         expect(hasEnded).to.equal(true);
         expect(endobj).to.not.empty;

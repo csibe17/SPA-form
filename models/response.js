@@ -1,34 +1,34 @@
-module.exports = class Response{
+module.exports = class Response {
 
-	constructor(){
-		this.response = {messages:[]};
-	}
+    constructor() {
+        this.response = {messages: []};
+    }
 
-	// Getter/setters
-	set code(code){
-		this.response.code = code;
-	}
+    // Getter/setters
+    set code(code) {
+        this.response.code = code;
+    }
 
-	get code(){
-		return this.response.code;
-	}
+    get code() {
+        return this.response.code;
+    }
 
-	// Message related methods
-	addMessage(message){
-		this.response.messages.push(message);
-	}
+    // Message related methods
+    addMessage(message) {
+        this.response.messages.push(message);
+    }
 
-	hasMessages(){
-		return this.response.messages.length > 0 ? true : false;
-	}
+    hasMessages() {
+        return this.response.messages.length > 0 ? true : false;
+    }
 
-	clearMessages(){
-		this.response.messages = [];
-	}
+    clearMessages() {
+        this.response.messages = [];
+    }
 
-	// Build JSON object
-	create(){
-		return JSON.stringify(this.response);
-	}
+    // Build JSON object
+    create() {
+        return JSON.stringify(this.response);
+    }
 
-}
+};

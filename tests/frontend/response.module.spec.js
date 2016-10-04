@@ -17,7 +17,7 @@ describe("ResponseHandler modul", function () {
     });
 
     it("should handle success", function () {
-        var data=ResponseHandler.handleSuccess({data: {messages: ["message1","message2"]}});
+        var data = ResponseHandler.handleSuccess({data: {messages: ["message1", "message2"]}});
         expect(MessageHandler.addMessage.calls.count()).toEqual(2);
         expect(data.messages.length).toEqual(2);
     });

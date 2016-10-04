@@ -16,7 +16,7 @@ describe("Test for backend User model", function () {
     });
 
     it("should create the object with valid values", function () {
-        var user1 = new User('John Bow','IT Coordinator','mail@john.com','1955-10-20');
+        var user1 = new User('John Bow', 'IT Coordinator', 'mail@john.com', '1955-10-20');
 
         expect(user1.name).to.be.a('string');
         expect(user1.occupation).to.be.a('string');
@@ -30,7 +30,7 @@ describe("Test for backend User model", function () {
     });
 
     it("should check the stringified version of the user", function () {
-        var user1 = new User('John Bow','IT Coordinator','mail@john.com','1955-10-20');
+        var user1 = new User('John Bow', 'IT Coordinator', 'mail@john.com', '1955-10-20');
 
         expect(user1.toString()).to.be.a('string');
         expect(user1.toString()).to.be.equal('Name: John Bow\nEmail: mail@john.com\nOccupation: IT Coordinator\nBirthday: 1955-10-20');

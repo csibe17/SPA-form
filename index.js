@@ -18,16 +18,16 @@ require('./routes/getoccupations')(app);
 
 // Standard error handler
 app.use((err, req, res, next) => {
-	console.error(err.stack);
-	if(!err.status){
-		res.sendStatus(500);//.send('Internal Server Error');
-	}
-	else{
-		res.sendStatus(err.status);
-	}
+    console.error(err.stack);
+    if (!err.status) {
+        res.sendStatus(500);//.send('Internal Server Error');
+    }
+    else {
+        res.sendStatus(err.status);
+    }
 });
 
 // Start server
 var server = app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
