@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": "node >= 6.7.0",
   "directories": {
     "test": "tests"
   },
@@ -24,7 +25,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test-frontend": "karma start",
+    "test-backend": "mocha --recursive tests/backend/"
   },
   "author": "Gabor Cseh",
   "license": "ISC"
